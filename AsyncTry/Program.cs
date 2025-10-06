@@ -69,8 +69,8 @@ async Task<string> ProcessDataAsync(MyFile file)
 
 public struct MyFile
 {
-    public string Name;
-    public int TimeToProcess;
+    public string Name { get; init; }
+    public int TimeToProcess { get; init; }
 
     public MyFile(string fileName, int timeToProcess = 1000)
     {
