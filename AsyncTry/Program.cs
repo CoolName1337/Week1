@@ -50,7 +50,6 @@ void MainThreadWork(int TimeToWork)
         Thread.Sleep(TimeToWork / 5);
         Console.WriteLine($"Еще какая-то работа в {Thread.CurrentThread.ManagedThreadId} потоке");
     }
-
 }
 
 string ProcessData(MyFile file)
@@ -67,14 +66,5 @@ async Task<string> ProcessDataAsync(MyFile file)
     return $"{file.Name} обработан за {file.TimeToProcess} в {Thread.CurrentThread.ManagedThreadId} потоке";
 }
 
-public struct MyFile
-{
-    public string Name { get; init; }
-    public int TimeToProcess { get; init; }
 
-    public MyFile(string fileName, int timeToProcess = 1000)
-    {
-        Name = fileName;
-        TimeToProcess = timeToProcess;
-    }
-}
+public record MyFile(string Name, int TimeToProcess);
